@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {EngineService} from '../../services/engine.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,14 +11,14 @@ export class AuthComponent {
     @ViewChild('emailInput') emailInput!: ElementRef;
     @ViewChild('passwordInput') passwordInput!: ElementRef;
 
-    public constructor(private router: Router, private authService: AuthService) {}
+    public constructor(private router: Router, private engineService: EngineService) {}
 
     public async loginClickHandler() {
         const email = this.emailInput.nativeElement.value;
         const password = this.passwordInput.nativeElement.value;
 
         try {
-            const token = await this.authService.login(email, password);
+            const token = await this.engineService.login(email, password);
             console.log(token);
 
             await this.router.navigateByUrl('/shop');

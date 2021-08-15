@@ -1,1 +1,5 @@
-<p>shop works!</p>
+<ul>
+    <li *ngFor="let xyz of songs">
+        <bijan-card-component [song]="xyz" (buttonEventEmitter)="logName($event)"></bijan-card-component>
+    </li>
+</ul>

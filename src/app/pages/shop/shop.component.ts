@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {EngineService} from '../../services/engine.service';
+import Song from '../../models/SongModel';
 
 @Component({
     selector: 'app-shop',
@@ -6,7 +8,16 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-    constructor() {}
+    public songs: Song[] = [];
 
-    ngOnInit(): void {}
+    public constructor(private engineService: EngineService) {}
+
+    public async ngOnInit() {
+        this.songs = await this.engineService.songsPage();
+    }
+
+    public logName(name: string) {
+        console.log(name);
+        this.songs = this.songs.filter((x) => x.name !== name);
+    }
 }

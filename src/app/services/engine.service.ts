@@ -7,7 +7,7 @@ const TOKEN_KEY = '__token__';
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService {
+export class EngineService {
     public readonly BASE_URL = 'https://songs.code-star.ir/';
 
     private static get token(): string {
@@ -33,18 +33,18 @@ export class AuthService {
     }
 
     public async getOneUser(id: number): Promise<User> {
-        const result = await AuthService.sendRequest(this.BASE_URL + `user/one/${id}`);
+        const result = await EngineService.sendRequest(this.BASE_URL + `user/one/${id}`);
         return new User(result);
     }
 
     public async login(email: string, password: string): Promise<string> {
-        const {token} = await AuthService.sendRequest(this.BASE_URL + 'user/login', {email, password});
+        const {token} = await EngineService.sendRequest(this.BASE_URL + 'user/login', {email, password});
         localStorage.setItem(TOKEN_KEY, token.toString());
         return token;
     }
 
-    public async songsPage(size: number, current: number): Promise<Song[]> {
-        const songs = await AuthService.sendRequest(this.BASE_URL + 'song/page', {size, current});
+    public async songsPage(size: number = 20, current: number = 1): Promise<Song[]> {
+        const {songs} = await EngineService.sendRequest(this.BASE_URL + 'song/page', {size, current});
         return songs.map((x: any) => new Song(x));
     }
 }
