@@ -1,0 +1,112 @@
+:host {
+    display: grid;
+    .content {
+        display: flex;
+        gap: 4rem;
+
+        min-height: 100vh;
+
+        margin: auto;
+
+        section {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            max-width: var(--max-width);
+
+            padding: 4rem 8rem;
+
+            h5 {
+                font-weight: 300;
+                line-height: 1.5;
+            }
+
+            &.left {
+                .logo {
+                    align-self: flex-start;
+                }
+
+                .form-wrapper {
+                    flex: 1;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 4rem;
+
+                    .header {
+                        h1 {
+                            margin-bottom: 0.5rem;
+
+                            font-weight: 700;
+                        }
+                    }
+
+                    .form {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2rem;
+
+                        &__field {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
+
+                            label {
+                                font-size: 1.4rem;
+                            }
+
+                            input {
+                                padding: 0.5rem 1rem;
+
+                                border: 2px solid var(--color-gray-80);
+                                border-radius: var(--border-radius);
+
+                                line-height: 1.5;
+                            }
+                        }
+
+                        button {
+                        }
+                    }
+
+                    .toggle-auth {
+                        button {
+                            background-color: transparent;
+                            color: var(--color-primary--idle);
+
+                            border: 2px solid currentColor;
+
+                            &:hover {
+                                color: var(--color-primary--idle);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.right {
+                background-image: linear-gradient(to bottom, var(--color-primary--idle), var(--color-primary--hover));
+                color: var(--color-gray-98);
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                h3 {
+                }
+
+                h5 {
+                    max-width: 50ch;
+
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
